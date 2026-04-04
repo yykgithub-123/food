@@ -1,0 +1,621 @@
+/* pages/kitchen/kitchen.wxss */
+
+.kitchen-container {
+  min-height: 100vh;
+  background-color: var(--primary-bg);
+  padding-bottom: 200rpx;
+}
+
+/* 横幅区域 */
+.kitchen-banner {
+  width: 100%;
+  height: 200rpx;
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+}
+
+/* 厨房信息区域 */
+.kitchen-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx;
+  background: var(--white);
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.info-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.kitchen-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  background: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-placeholder {
+  font-size: 48rpx;
+}
+
+.kitchen-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.kitchen-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.kitchen-intro {
+  font-size: 24rpx;
+  color: var(--text-hint);
+  margin-top: 8rpx;
+}
+
+.info-actions {
+  display: flex;
+  gap: 16rpx;
+}
+
+.action-btn {
+  padding: 12rpx 24rpx;
+  border-radius: 24rpx;
+  font-size: 24rpx;
+}
+
+.action-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.action-secondary {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+/* 内容区域 */
+.kitchen-content {
+  display: flex;
+  height: calc(100vh - 450rpx);
+}
+
+/* 分类栏 */
+.category-bar {
+  width: 180rpx;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+.category-manage-top {
+  padding: 24rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: var(--text-hint);
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.category-scroll {
+  flex: 1;
+  overflow: hidden;
+}
+
+.category-item {
+  padding: 28rpx 16rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  border-left: 6rpx solid transparent;
+}
+
+.category-active {
+  background: var(--primary-bg);
+  color: var(--primary);
+  border-left-color: var(--primary);
+  font-weight: 500;
+}
+
+/* 搜索栏 */
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  background: var(--white);
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.search-input {
+  flex: 1;
+  height: 72rpx;
+  background: var(--primary-light);
+  border-radius: 36rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+}
+
+.search-cancel {
+  padding: 16rpx 24rpx;
+  font-size: 28rpx;
+  color: var(--primary);
+}
+
+/* 菜品列表 */
+.dish-list {
+  flex: 1;
+  background: var(--primary-bg);
+  padding: 20rpx;
+}
+
+.dish-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400rpx;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: var(--text-hint);
+}
+
+.dish-item {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 16rpx;
+}
+
+.dish-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+  background: var(--primary-light);
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.dish-image-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.dish-image-placeholder {
+  font-size: 48rpx;
+}
+
+.dish-info {
+  flex: 1;
+}
+
+.dish-name {
+  font-size: 28rpx;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.dish-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+  margin-top: 12rpx;
+}
+
+.spec-tag {
+  font-size: 20rpx;
+  color: var(--text-hint);
+  background: var(--primary-light);
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+}
+
+.dish-action {
+  background: var(--primary);
+  color: var(--white);
+  padding: 12rpx 24rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+}
+
+/* 购物车栏 */
+.cart-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 5rpx;
+  background: var(--white);
+  border-top: 1rpx solid var(--border-color);
+  padding: 16rpx 24rpx;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+.cart-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-info {
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon {
+  font-size: 40rpx;
+}
+
+.cart-count {
+  background: var(--primary);
+  color: var(--white);
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 16rpx;
+  margin-left: 8rpx;
+}
+
+.cart-text {
+  font-size: 28rpx;
+  color: var(--text-primary);
+  margin-left: 12rpx;
+}
+
+.cart-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 16rpx;
+  align-items: left;
+}
+
+.cart-action-btn {
+  padding: 12rpx 24rpx;
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  background: var(--primary-light);
+  color: var(--primary);
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.cart-invite-btn {
+  background: var(--primary-light);
+  color: var(--primary);
+  white-space: nowrap;
+  padding: 12rpx 24rpx;
+  font-size: 24rpx;
+  border-radius: 24rpx;
+}
+
+.cart-submit {
+  background: var(--primary);
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.cart-submitting {
+  opacity: 0.7;
+}
+
+.cart-toggle {
+  padding: 8rpx 16rpx;
+  background: var(--primary-light);
+  border-radius: 8rpx;
+  font-size: 22rpx;
+  color: var(--primary);
+}
+
+/* 规格弹窗 */
+.spec-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.spec-modal-content {
+  width: 100%;
+  background: var(--white);
+  border-radius: 32rpx 32rpx 0 0;
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+.spec-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+.spec-modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.spec-modal-close {
+  font-size: 40rpx;
+  color: var(--text-hint);
+}
+
+.spec-label {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+.spec-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-bottom: 32rpx;
+}
+
+.spec-option {
+  padding: 16rpx 32rpx;
+  background: var(--primary-light);
+  border-radius: 16rpx;
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.spec-selected {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.spec-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spec-quantity {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.quantity-label {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.quantity-btn {
+  width: 56rpx;
+  height: 56rpx;
+  background: var(--primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: var(--primary);
+}
+
+.quantity-value {
+  font-size: 32rpx;
+  font-weight: bold;
+  min-width: 40rpx;
+  text-align: center;
+}
+
+.spec-confirm {
+  background: var(--primary);
+  color: var(--white);
+  padding: 20rpx 48rpx;
+  border-radius: 32rpx;
+  font-size: 28rpx;
+}
+
+/* 购物车弹窗 */
+.cart-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.cart-modal-content {
+  width: 100%;
+  max-height: 70vh;
+  background: var(--white);
+  border-radius: 32rpx 32rpx 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 32rpx;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.cart-modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.cart-modal-clear {
+  font-size: 26rpx;
+  color: var(--text-hint);
+}
+
+.cart-modal-body {
+  flex: 1;
+  padding: 24rpx 32rpx;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 0;
+}
+
+.cart-empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+}
+
+.cart-empty-text {
+  font-size: 28rpx;
+  color: var(--text-hint);
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 12rpx;
+  background: var(--primary-light);
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cart-item-image-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.cart-item-image-placeholder {
+  font-size: 32rpx;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-name {
+  font-size: 28rpx;
+  color: var(--text-primary);
+}
+
+.cart-item-spec {
+  font-size: 22rpx;
+  color: var(--text-hint);
+  margin-top: 4rpx;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.cart-item-btn {
+  width: 48rpx;
+  height: 48rpx;
+  background: var(--primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: var(--primary);
+}
+
+.cart-item-quantity {
+  min-width: 40rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.cart-modal-footer {
+  display: flex;
+  border-top: 1rpx solid var(--border-color);
+}
+
+.cart-modal-btn {
+  flex: 1;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+}
+
+.cart-modal-cancel {
+  color: var(--text-secondary);
+  border-right: 1rpx solid var(--border-color);
+}
+
+.cart-modal-submit {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.cart-modal-submitting {
+  opacity: 0.7;
+}

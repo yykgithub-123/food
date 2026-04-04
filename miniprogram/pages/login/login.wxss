@@ -1,0 +1,178 @@
+/* pages/login/login.wxss */
+
+.login-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-light) 100%);
+  padding: 80rpx 40rpx;
+  box-sizing: border-box;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 80rpx;
+}
+
+.login-logo {
+  font-size: 120rpx;
+  margin-bottom: 24rpx;
+}
+
+.login-title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 12rpx;
+}
+
+.login-subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}
+
+.login-form {
+  background: var(--white);
+  border-radius: 24rpx;
+  padding: 48rpx 32rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.08);
+}
+
+.form-item {
+  margin-bottom: 40rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  color: var(--text-primary);
+  margin-bottom: 16rpx;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  height: 88rpx;
+  background: var(--primary-light);
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  font-size: 30rpx;
+  color: var(--text-primary);
+  box-sizing: border-box;
+}
+
+.form-input::placeholder {
+  color: var(--text-hint);
+}
+
+.role-select {
+  display: flex;
+  gap: 24rpx;
+}
+
+.role-item {
+  flex: 1;
+  background: var(--primary-light);
+  border-radius: 16rpx;
+  padding: 32rpx 24rpx;
+  text-align: center;
+  border: 4rpx solid transparent;
+  transition: all 0.3s;
+}
+
+.role-active {
+  background: var(--white);
+  border-color: var(--primary);
+  box-shadow: 0 4rpx 16rpx rgba(255, 107, 157, 0.3);
+}
+
+.role-icon {
+  display: block;
+  font-size: 56rpx;
+  margin-bottom: 12rpx;
+}
+
+.role-text {
+  display: block;
+  font-size: 30rpx;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.role-desc {
+  display: block;
+  font-size: 24rpx;
+  color: var(--text-hint);
+}
+
+.login-btn {
+  width: 100%;
+  height: 96rpx;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  border: none;
+  margin-top: 20rpx;
+}
+
+.login-btn[disabled] {
+  background: var(--primary-light);
+  color: var(--text-hint);
+}
+
+.join-kitchen {
+  text-align: center;
+  margin-top: 32rpx;
+}
+
+.join-text {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.join-link {
+  font-size: 26rpx;
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* 邀请码区域 */
+.invite-code-section {
+  margin-top: 40rpx;
+  text-align: center;
+}
+
+.invite-code-toggle {
+  font-size: 26rpx;
+  color: var(--primary);
+  padding: 16rpx 0;
+}
+
+.invite-code-input {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 20rpx;
+}
+
+.invite-input {
+  flex: 1;
+  height: 72rpx;
+  background: var(--primary-light);
+  border-radius: 12rpx;
+  padding: 0 20rpx;
+  font-size: 26rpx;
+  box-sizing: border-box;
+}
+
+.invite-btn {
+  padding: 0 32rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 12rpx;
+  font-size: 26rpx;
+}

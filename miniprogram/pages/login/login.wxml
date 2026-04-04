@@ -1,0 +1,82 @@
+<!--pages/login/login.wxml-->
+<view class="login-container theme-{{theme}}">
+  <!-- 顶部装饰 -->
+  <view class="login-header">
+    <text class="login-logo">🍳</text>
+    <text class="login-title">我家厨房</text>
+    <text class="login-subtitle">粒粒今天吃什么</text>
+  </view>
+
+  <!-- 登录表单 -->
+  <view class="login-form">
+    <!-- 昵称输入 -->
+    <view class="form-item">
+      <text class="form-label">你的昵称</text>
+      <input
+        class="form-input"
+        type="text"
+        placeholder="请输入昵称"
+        maxlength="20"
+        value="{{nickname}}"
+        bindinput="onNicknameInput"
+      />
+    </view>
+
+    <!-- 角色选择 -->
+    <view class="form-item">
+      <text class="form-label">你的身份</text>
+      <view class="role-select">
+        <view
+          class="role-item {{role === 'chef' ? 'role-active' : ''}}"
+          bindtap="onSelectRole"
+          data-role="chef"
+        >
+          <text class="role-icon">👨‍🍳</text>
+          <text class="role-text">厨师</text>
+          <text class="role-desc">管理菜品和订单</text>
+        </view>
+        <view
+          class="role-item {{role === 'diner' ? 'role-active' : ''}}"
+          bindtap="onSelectRole"
+          data-role="diner"
+        >
+          <text class="role-icon">🍽️</text>
+          <text class="role-text">食客</text>
+          <text class="role-desc">点餐下单</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 登录按钮 -->
+    <button
+      class="login-btn"
+      disabled="{{!canSubmit}}"
+      bindtap="onLogin"
+    >
+      {{isCreatingKitchen ? '创建厨房中...' : '开始使用'}}
+    </button>
+
+    <!-- 加入厨房 -->
+    <view class="join-kitchen" wx:if="{{hasInviteKitchenId}}">
+      <text class="join-text">已收到厨房邀请，</text>
+      <text class="join-link" bindtap="onJoinKitchen">点击加入</text>
+    </view>
+
+    <!-- 我有邀请码 -->
+    <view class="invite-code-section">
+      <view class="invite-code-toggle" bindtap="onToggleInviteInput">
+        <text>{{showInviteInput ? '收起' : '我有邀请码'}}</text>
+      </view>
+      <view class="invite-code-input" wx:if="{{showInviteInput}}">
+        <input
+          class="invite-input"
+          type="text"
+          placeholder="请输入厨房ID"
+          value="{{inputKitchenId}}"
+          bindinput="onInputKitchenId"
+        />
+        <view class="invite-btn" bindtap="onJoinByCode">加入厨房</view>
+      </view>
+    </view>
+  </view>
+</view>

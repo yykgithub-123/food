@@ -1,0 +1,72 @@
+<!--pages/addDish/addDish.wxml-->
+<view class="add-dish-container">
+  <!-- 菜品图片 -->
+  <view class="form-section">
+    <text class="section-title">菜品图片</text>
+    <view class="image-upload" bindtap="onChooseImage">
+      <image
+        wx:if="{{dishImage}}"
+        class="preview-image"
+        src="{{dishImage}}"
+        mode="aspectFill"
+      ></image>
+      <view class="upload-placeholder" wx:else>
+        <text class="upload-icon">📷</text>
+        <text class="upload-text">点击上传图片</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 菜品名称 -->
+  <view class="form-section">
+    <text class="section-title">菜品名称</text>
+    <input
+      class="form-input"
+      type="text"
+      placeholder="请输入菜品名称"
+      maxlength="30"
+      value="{{dishName}}"
+      bindinput="onNameInput"
+    />
+  </view>
+
+  <!-- 所属分类 -->
+  <view class="form-section">
+    <text class="section-title">所属分类</text>
+    <view class="category-select">
+      <view
+        class="category-option {{selectedCategoryId === item._id ? 'category-selected' : ''}}"
+        wx:for="{{categories}}"
+        wx:key="_id"
+        bindtap="onSelectCategory"
+        data-id="{{item._id}}"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 规格设置 -->
+  <view class="form-section">
+    <text class="section-title">规格设置（可选）</text>
+    <view class="specs-list">
+      <view class="spec-item" wx:for="{{specs}}" wx:key="index">
+        <input
+          class="spec-input"
+          type="text"
+          placeholder="规格名称（如：大份、小份）"
+          value="{{item.name}}"
+          bindinput="onSpecInput"
+          data-index="{{index}}"
+        />
+        <view class="spec-delete" bindtap="onDeleteSpec" data-index="{{index}}">×</view>
+      </view>
+      <view class="spec-add" bindtap="onAddSpec">+ 添加规格</view>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <button class="submit-btn" bindtap="onSubmit" disabled="{{!canSubmit}}">
+    {{isSubmitting ? '保存中...' : '保存菜品'}}
+  </button>
+</view>

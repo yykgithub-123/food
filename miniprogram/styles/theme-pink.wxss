@@ -1,0 +1,52 @@
+/* theme-pink.wxss - 粉色甜美风格 */
+
+page {
+  --primary: #FF6B9D;
+  --primary-light: #FFE4E9;
+  --primary-bg: #FFF0F5;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-hint: #999999;
+  --border-color: #FFE4E9;
+  --white: #FFFFFF;
+}
+
+.btn-primary {
+  background-color: #FF6B9D !important;
+  color: #FFFFFF !important;
+}
+
+.btn-secondary {
+  background-color: #FFE4E9 !important;
+  color: #FF6B9D !important;
+}
+
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #FFE4E9;
+}
+
+.tag {
+  background-color: #FFE4E9;
+  color: #FF6B9D;
+}
+
+.highlight {
+  background-color: #FF6B9D;
+  color: #FFFFFF;
+}
+
+.category-item-active {
+  background-color: #FF6B9D !important;
+  color: #FFFFFF !important;
+}
+
+.date-has-order {
+  background-color: #FF6B9D !important;
+  color: #FFFFFF !important;
+}
+
+.status-pending {
+  background-color: #FFE4E9;
+  color: #FF6B9D;
+}

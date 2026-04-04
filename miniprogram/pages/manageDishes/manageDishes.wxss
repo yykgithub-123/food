@@ -1,0 +1,316 @@
+/* pages/manageDishes/manageDishes.wxss */
+.manage-dishes-container {
+  padding: 16px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 筛选栏 */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filter-item {
+  padding: 8px 16px;
+  background-color: #fff;
+  border-radius: 16px;
+  font-size: 14px;
+  color: #666;
+}
+
+.filter-active {
+  background-color: #FF6B9D;
+  color: #fff;
+}
+
+/* 菜品列表 */
+.dishes-list {
+  height: calc(100vh - 120px);
+}
+
+.dish-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.empty-text {
+  color: #999;
+  font-size: 14px;
+}
+
+.dish-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.dish-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dish-image-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.dish-image-placeholder {
+  font-size: 32px;
+}
+
+.dish-info {
+  flex: 1;
+  margin-left: 12px;
+}
+
+.dish-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.dish-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.spec-tag {
+  padding: 4px 8px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #666;
+}
+
+.dish-category {
+  font-size: 12px;
+  color: #999;
+  margin-top: 6px;
+}
+
+.dish-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.action-edit {
+  background-color: #FF6B9D;
+  color: #fff;
+}
+
+.action-delete {
+  background-color: #fff;
+  color: #FF6B9D;
+  border: 1px solid #FF6B9D;
+}
+
+/* 添加按钮 */
+.add-btn {
+  position: fixed;
+  bottom: 32px;
+  left: 16px;
+  right: 16px;
+  height: 48px;
+  background-color: #FF6B9D;
+  color: #fff;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+/* 编辑弹窗 */
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.edit-modal-content {
+  width: 90%;
+  max-height: 80vh;
+  background-color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.edit-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.edit-modal-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.edit-modal-close {
+  font-size: 24px;
+  color: #999;
+}
+
+.edit-modal-body {
+  padding: 16px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.edit-image {
+  width: 100%;
+  height: 120px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.edit-image-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.edit-image-placeholder {
+  color: #999;
+  font-size: 14px;
+}
+
+.edit-field {
+  margin-bottom: 16px;
+}
+
+.edit-label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.edit-input {
+  width: 100%;
+  height: 40px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+.edit-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.edit-category {
+  padding: 8px 16px;
+  background-color: #f5f5f5;
+  border-radius: 16px;
+  font-size: 12px;
+  color: #666;
+}
+
+.edit-category-selected {
+  background-color: #FF6B9D;
+  color: #fff;
+}
+
+.edit-specs {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.edit-spec-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.edit-spec-input {
+  flex: 1;
+  height: 32px;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+.edit-spec-delete {
+  font-size: 18px;
+  color: #999;
+  margin-left: 8px;
+}
+
+.edit-spec-add {
+  color: #FF6B9D;
+  font-size: 12px;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.edit-modal-footer {
+  display: flex;
+  border-top: 1px solid #eee;
+}
+
+.edit-cancel {
+  flex: 1;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 16px;
+}
+
+.edit-save {
+  flex: 1;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FF6B9D;
+  color: #fff;
+  font-size: 16px;
+}

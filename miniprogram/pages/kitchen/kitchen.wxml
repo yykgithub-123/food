@@ -1,0 +1,202 @@
+<!--pages/kitchen/kitchen.wxml-->
+<view class="kitchen-container theme-{{theme}}">
+  <!-- 顶部横幅区域 (1/5) -->
+  <view class="kitchen-banner" bindtap="onBannerTap">
+    <image
+      class="banner-image"
+      wx:if="{{kitchenInfo.banner}}"
+      src="{{kitchenInfo.banner}}"
+      mode="aspectFill"
+    ></image>
+    <view class="banner-placeholder" wx:else></view>
+  </view>
+
+  <!-- 厨房信息区域 (1/5) -->
+  <view class="kitchen-info">
+    <view class="info-left">
+      <view class="kitchen-avatar" bindtap="onAvatarTap">
+        <image
+          wx:if="{{kitchenInfo.avatar}}"
+          class="avatar-image"
+          src="{{kitchenInfo.avatar}}"
+          mode="aspectFill"
+        ></image>
+        <text class="avatar-placeholder" wx:else>🍳</text>
+      </view>
+      <view class="kitchen-text">
+        <text class="kitchen-name">{{kitchenInfo.name || '我家厨房'}}</text>
+        <text class="kitchen-intro">{{kitchenInfo.intro || '粒粒今天吃什么'}}</text>
+      </view>
+    </view>
+    <view class="info-actions">
+      <view class="action-btn action-secondary" bindtap="onManageDishes">管理</view>
+      <view class="action-btn action-primary" bindtap="onAddDish">添加菜品</view>
+      <view class="action-btn action-secondary" bindtap="onToggleSearch">🔍</view>
+    </view>
+  </view>
+
+  <!-- 搜索区域 -->
+  <view class="search-bar" wx:if="{{showSearch}}">
+    <input
+      class="search-input"
+      type="text"
+      placeholder="搜索菜品..."
+      value="{{searchKeyword}}"
+      bindinput="onSearchInput"
+      bindconfirm="onSearchConfirm"
+    />
+    <view class="search-cancel" bindtap="onCancelSearch">取消</view>
+  </view>
+
+  <!-- 分类和菜品区域 (3/5) -->
+  <view class="kitchen-content">
+    <!-- 左侧分类栏 -->
+    <view class="category-bar">
+      <view class="category-manage-top" bindtap="onManageCategories">
+        <text>⚙️ 分类</text>
+      </view>
+      <scroll-view scroll-y class="category-scroll">
+        <view
+          class="category-item {{currentCategoryId === item._id ? 'category-active' : ''}}"
+          wx:for="{{categories}}"
+          wx:key="_id"
+          bindtap="onSelectCategory"
+          data-id="{{item._id}}"
+        >
+          {{item.name}}
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 右侧菜品列表 -->
+    <scroll-view scroll-y class="dish-list" bindscrolltolower="onLoadMoreDishes">
+      <view class="dish-empty" wx:if="{{dishes.length === 0}}">
+        <text class="empty-icon">🍽️</text>
+        <text class="empty-text">{{searchKeyword ? '未找到相关菜品' : '暂无菜品，点击添加'}}</text>
+      </view>
+      <view
+        class="dish-item"
+        wx:for="{{dishes}}"
+        wx:key="_id"
+      >
+        <view class="dish-image">
+          <image
+            wx:if="{{item.image}}"
+            class="dish-image-inner"
+            src="{{item.image}}"
+            mode="aspectFill"
+            lazy-load="true"
+            webp="true"
+          ></image>
+          <text class="dish-image-placeholder" wx:else>🍽️</text>
+        </view>
+        <view class="dish-info">
+          <text class="dish-name">{{item.name}}</text>
+          <view class="dish-specs" wx:if="{{item.specs && item.specs.length > 0}}">
+            <text class="spec-tag" wx:for="{{item.specs}}" wx:for-item="spec" wx:key="name">{{spec.name}}</text>
+          </view>
+        </view>
+        <view class="dish-action" bindtap="onAddToCart" data-dish="{{item}}">
+          <text>+添加</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 底部购物车栏 -->
+  <view class="cart-bar {{cartExpanded ? 'cart-expanded' : ''}}">
+    <view class="cart-main">
+      <view class="cart-info" bindtap="onCartTap">
+        <text class="cart-icon">🛒</text>
+        <text class="cart-count">{{cartCount}}</text>
+        <text class="cart-text">购物车</text>
+      </view>
+      <view class="cart-actions" wx:if="{{cartExpanded}}">
+        <view class="cart-action-btn cart-invite-btn" bindtap="onInvite">邀请她</view>
+        <view class="cart-action-btn cart-submit {{isSubmitting ? 'cart-submitting' : ''}}" bindtap="onSubmitOrder">
+          {{isSubmitting ? '下单中...' : '下单'}}
+        </view>
+      </view>
+      <view class="cart-toggle" bindtap="onToggleCart">
+        <text>{{cartExpanded ? '◀ 收起' : '▶'}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 规格选择弹窗 -->
+<view class="spec-modal" wx:if="{{showSpecModal}}" bindtap="onCloseSpecModal">
+  <view class="spec-modal-content" catchtap="stopPropagation">
+    <view class="spec-modal-header">
+      <text class="spec-modal-title">{{selectedDish.name}}</text>
+      <text class="spec-modal-close" bindtap="onCloseSpecModal">×</text>
+    </view>
+    <view class="spec-modal-body">
+      <text class="spec-label">选择规格</text>
+      <view class="spec-options">
+        <view
+          class="spec-option {{selectedSpec === item.name ? 'spec-selected' : ''}}"
+          wx:for="{{selectedDish.specs}}"
+          wx:key="name"
+          bindtap="onSelectSpec"
+          data-spec="{{item.name}}"
+        >
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+    <view class="spec-modal-footer">
+      <view class="spec-quantity">
+        <text class="quantity-label">数量</text>
+        <view class="quantity-control">
+          <text class="quantity-btn" bindtap="onDecreaseQuantity">-</text>
+          <text class="quantity-value">{{selectedQuantity}}</text>
+          <text class="quantity-btn" bindtap="onIncreaseQuantity">+</text>
+        </view>
+      </view>
+      <view class="spec-confirm" bindtap="onConfirmAdd">确认添加</view>
+    </view>
+  </view>
+</view>
+
+<!-- 购物车弹窗 -->
+<view class="cart-modal" wx:if="{{showCartModal}}" bindtap="onCloseCartModal">
+  <view class="cart-modal-content" catchtap="stopPropagation">
+    <view class="cart-modal-header">
+      <text class="cart-modal-title">购物车 ({{cartCount}}件)</text>
+      <view class="cart-modal-clear" bindtap="onClearCart">清空</view>
+    </view>
+    <scroll-view scroll-y class="cart-modal-body">
+      <view class="cart-empty" wx:if="{{cartItems.length === 0}}">
+        <text class="cart-empty-icon">🛒</text>
+        <text class="cart-empty-text">购物车是空的</text>
+      </view>
+      <view class="cart-item" wx:for="{{cartItems}}" wx:key="_id">
+        <view class="cart-item-image">
+          <image
+            wx:if="{{item.dishImage}}"
+            class="cart-item-image-inner"
+            src="{{item.dishImage}}"
+            mode="aspectFill"
+          ></image>
+          <text class="cart-item-image-placeholder" wx:else>🍽️</text>
+        </view>
+        <view class="cart-item-info">
+          <text class="cart-item-name">{{item.dishName}}</text>
+          <text class="cart-item-spec" wx:if="{{item.spec}}">{{item.spec}}</text>
+        </view>
+        <view class="cart-item-actions">
+          <view class="cart-item-btn" bindtap="onDecreaseCartItem" data-id="{{item._id}}">-</view>
+          <text class="cart-item-quantity">{{item.quantity}}</text>
+          <view class="cart-item-btn" bindtap="onIncreaseCartItem" data-id="{{item._id}}" data-dish="{{item}}">+</view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="cart-modal-footer">
+      <view class="cart-modal-btn cart-modal-cancel" bindtap="onCloseCartModal">继续点餐</view>
+      <view class="cart-modal-btn cart-modal-submit {{isSubmitting ? 'cart-modal-submitting' : ''}}" bindtap="onSubmitOrder">
+        {{isSubmitting ? '下单中...' : '立即下单'}}
+      </view>
+    </view>
+  </view>
+</view>

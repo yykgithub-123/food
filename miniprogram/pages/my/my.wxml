@@ -1,0 +1,108 @@
+<!--pages/my/my.wxml-->
+<view class="my-container theme-{{theme}}">
+  <!-- 用户信息区 -->
+  <view class="user-card">
+    <view class="user-avatar" bindtap="onChangeAvatar">
+      <image
+        wx:if="{{userInfo.avatar}}"
+        class="avatar-image"
+        src="{{userInfo.avatar}}"
+        mode="aspectFill"
+      ></image>
+      <text class="avatar-placeholder" wx:else>👤</text>
+    </view>
+    <view class="user-info">
+      <text class="user-nickname">{{userInfo.nickname || '未登录'}}</text>
+      <view class="user-role">
+        <text class="role-tag">当前身份：{{userInfo.role === 'chef' ? '厨师' : '食客'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 身份切换 -->
+  <view class="section-card">
+    <view class="section-title">🔄 身份切换</view>
+    <view class="role-switch">
+      <view
+        class="role-option {{userInfo.role === 'chef' ? 'role-selected' : ''}}"
+        bindtap="onSwitchRole"
+        data-role="chef"
+      >
+        <text class="role-icon">👨‍🍳</text>
+        <text class="role-name">厨师</text>
+      </view>
+      <view
+        class="role-option {{userInfo.role === 'diner' ? 'role-selected' : ''}}"
+        bindtap="onSwitchRole"
+        data-role="diner"
+      >
+        <text class="role-icon">🍽️</text>
+        <text class="role-name">食客</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 风格切换 -->
+  <view class="section-card">
+    <view class="section-title">🎨 风格切换</view>
+    <view class="theme-switch">
+      <view
+        class="theme-option {{currentTheme === 'pink' ? 'theme-selected' : ''}}"
+        bindtap="onSwitchTheme"
+        data-theme="pink"
+      >
+        <view class="theme-preview theme-pink"></view>
+        <text class="theme-name">粉色甜美</text>
+      </view>
+      <view
+        class="theme-option {{currentTheme === 'white' ? 'theme-selected' : ''}}"
+        bindtap="onSwitchTheme"
+        data-theme="white"
+      >
+        <view class="theme-preview theme-white"></view>
+        <text class="theme-name">简约白色</text>
+      </view>
+      <view
+        class="theme-option {{currentTheme === 'green' ? 'theme-selected' : ''}}"
+        bindtap="onSwitchTheme"
+        data-theme="green"
+      >
+        <view class="theme-preview theme-green"></view>
+        <text class="theme-name">清新绿色</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 设置项列表 -->
+  <view class="section-card">
+    <view class="setting-item" bindtap="onChangeNickname">
+      <text class="setting-icon">👤</text>
+      <text class="setting-text">修改昵称</text>
+      <text class="setting-arrow">▶</text>
+    </view>
+    <view class="setting-item" bindtap="onChangeAvatar">
+      <text class="setting-icon">📷</text>
+      <text class="setting-text">修改头像</text>
+      <text class="setting-arrow">▶</text>
+    </view>
+    <view class="setting-item" bindtap="onShowHelp">
+      <text class="setting-icon">📖</text>
+      <text class="setting-text">使用说明</text>
+      <text class="setting-arrow">▶</text>
+    </view>
+  </view>
+
+  <!-- 食客离开厨房 -->
+  <view class="section-card" wx:if="{{userInfo.role === 'diner'}}">
+    <view class="setting-item" bindtap="onLeaveKitchen">
+      <text class="setting-icon">🚪</text>
+      <text class="setting-text">离开当前厨房</text>
+      <text class="setting-arrow">▶</text>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-section">
+    <view class="logout-btn" bindtap="onLogout">退出登录</view>
+  </view>
+</view>

@@ -1,0 +1,53 @@
+/* theme-white.wxss - 简约白色风格 */
+
+page {
+  --primary: #333333;
+  --primary-light: #F5F5F5;
+  --primary-bg: #FFFFFF;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-hint: #999999;
+  --border-color: #E0E0E0;
+  --white: #FFFFFF;
+}
+
+.btn-primary {
+  background-color: #333333 !important;
+  color: #FFFFFF !important;
+}
+
+.btn-secondary {
+  background-color: #F5F5F5 !important;
+  color: #333333 !important;
+  border: 1px solid #E0E0E0 !important;
+}
+
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
+}
+
+.tag {
+  background-color: #F5F5F5;
+  color: #333333;
+}
+
+.highlight {
+  background-color: #333333;
+  color: #FFFFFF;
+}
+
+.category-item-active {
+  background-color: #333333 !important;
+  color: #FFFFFF !important;
+}
+
+.date-has-order {
+  background-color: #333333 !important;
+  color: #FFFFFF !important;
+}
+
+.status-pending {
+  background-color: #F5F5F5;
+  color: #333333;
+}

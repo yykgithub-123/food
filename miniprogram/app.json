@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/kitchen/kitchen",
+    "pages/orders/orders",
+    "pages/calendar/calendar",
+    "pages/my/my",
+    "pages/login/login",
+    "pages/addDish/addDish",
+    "pages/manageDishes/manageDishes",
+    "pages/manageCategories/manageCategories"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FF6B9D",
+    "navigationBarTitleText": "我家厨房",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FF6B9D",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/kitchen/kitchen",
+        "text": "厨房"
+      },
+      {
+        "pagePath": "pages/orders/orders",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/calendar/calendar",
+        "text": "打卡"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  },
+  "cloud": true,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,141 @@
+/* pages/orders/orders.wxss */
+
+.orders-container {
+  min-height: 100vh;
+  background: var(--primary-bg);
+}
+
+.status-bar {
+  display: flex;
+  background: var(--white);
+  padding: 20rpx;
+  gap: 16rpx;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.status-item {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx;
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  background: var(--primary-bg);
+  border-radius: 24rpx;
+}
+
+.status-active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.orders-list {
+  height: calc(100vh - 120rpx);
+  padding: 20rpx;
+}
+
+.order-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400rpx;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: var(--text-hint);
+}
+
+.order-card {
+  background: var(--white);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.order-id {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.order-status {
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 12rpx;
+}
+
+.status-pending {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.status-completed {
+  background: #E8F5E9;
+  color: #4CAF50;
+}
+
+.status-cancelled {
+  background: #FFEBEE;
+  color: #F44336;
+}
+
+.order-time {
+  font-size: 24rpx;
+  color: var(--text-hint);
+  margin-bottom: 16rpx;
+}
+
+.order-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.order-item {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  background: var(--primary-bg);
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+.order-actions {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid var(--border-color);
+}
+
+.action-btn {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx;
+  border-radius: 24rpx;
+  font-size: 26rpx;
+}
+
+.action-complete {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.action-cancel {
+  background: var(--primary-light);
+  color: var(--text-secondary);
+}

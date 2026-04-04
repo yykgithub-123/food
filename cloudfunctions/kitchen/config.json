@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "openapi": []
+  },
+  "envVariables": {},
+  "vpc": {
+    "vpcId": "",
+    "subnetId": ""
+  },
+  "functionName": "kitchen",
+  "timeout": 10,
+  "memorySize": 256
+}

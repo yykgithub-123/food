@@ -1,0 +1,68 @@
+<!--pages/manageCategories/manageCategories.wxml-->
+<view class="manage-categories-container">
+  <!-- 分类列表 -->
+  <view class="categories-list">
+    <view class="category-empty" wx:if="{{categories.length === 0}}">
+      <text class="empty-icon">📂</text>
+      <text class="empty-text">暂无分类，点击下方添加</text>
+    </view>
+
+    <view
+      class="category-item"
+      wx:for="{{categories}}"
+      wx:key="_id"
+      data-index="{{index}}"
+    >
+      <view class="category-sort-btns">
+        <view class="sort-btn {{index === 0 ? 'sort-btn-disabled' : ''}}" bindtap="onMoveUp" data-index="{{index}}">↑</view>
+        <view class="sort-btn {{index === categories.length - 1 ? 'sort-btn-disabled' : ''}}" bindtap="onMoveDown" data-index="{{index}}">↓</view>
+      </view>
+      <view class="category-content">
+        <text class="category-name">{{item.name}}</text>
+        <text class="category-count">{{item.dishCount || 0}} 个菜品</text>
+      </view>
+      <view class="category-actions">
+        <view class="action-btn action-edit" bindtap="onEditCategory" data-id="{{item._id}}" data-name="{{item.name}}">编辑</view>
+        <view class="action-btn action-delete" bindtap="onDeleteCategory" data-id="{{item._id}}" data-name="{{item.name}}">删除</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 添加分类 -->
+  <view class="add-section">
+    <input
+      class="add-input"
+      type="text"
+      placeholder="输入分类名称"
+      value="{{newCategoryName}}"
+      bindinput="onNewCategoryInput"
+      maxlength="20"
+    />
+    <view class="add-btn {{newCategoryName ? '' : 'add-btn-disabled'}}" bindtap="onAddCategory">添加</view>
+  </view>
+</view>
+
+<!-- 编辑弹窗 -->
+<view class="edit-modal" wx:if="{{showEditModal}}" bindtap="onCloseEditModal">
+  <view class="edit-modal-content" catchtap="stopPropagation">
+    <view class="edit-modal-header">
+      <text class="edit-modal-title">编辑分类</text>
+      <text class="edit-modal-close" bindtap="onCloseEditModal">×</text>
+    </view>
+    <view class="edit-modal-body">
+      <view class="edit-field">
+        <text class="edit-label">分类名称</text>
+        <input
+          class="edit-input"
+          value="{{editCategoryName}}"
+          bindinput="onEditCategoryInput"
+          maxlength="20"
+        />
+      </view>
+    </view>
+    <view class="edit-modal-footer">
+      <view class="edit-cancel" bindtap="onCloseEditModal">取消</view>
+      <view class="edit-save" bindtap="onSaveEdit">保存</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+# IDE
+.idea/
+
+# Claude Code
+.claude/
+
+# Superpowers plugin
+.superpowers/
+
+# WeChat DevTools private config
+project.private.config.json
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

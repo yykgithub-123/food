@@ -1,0 +1,52 @@
+/* theme-green.wxss - 清新绿色风格 */
+
+page {
+  --primary: #4CAF50;
+  --primary-light: #C8E6C9;
+  --primary-bg: #E8F5E9;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-hint: #999999;
+  --border-color: #C8E6C9;
+  --white: #FFFFFF;
+}
+
+.btn-primary {
+  background-color: #4CAF50 !important;
+  color: #FFFFFF !important;
+}
+
+.btn-secondary {
+  background-color: #C8E6C9 !important;
+  color: #4CAF50 !important;
+}
+
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #C8E6C9;
+}
+
+.tag {
+  background-color: #C8E6C9;
+  color: #4CAF50;
+}
+
+.highlight {
+  background-color: #4CAF50;
+  color: #FFFFFF;
+}
+
+.category-item-active {
+  background-color: #4CAF50 !important;
+  color: #FFFFFF !important;
+}
+
+.date-has-order {
+  background-color: #4CAF50 !important;
+  color: #FFFFFF !important;
+}
+
+.status-pending {
+  background-color: #C8E6C9;
+  color: #4CAF50;
+}

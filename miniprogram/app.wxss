@@ -1,0 +1,140 @@
+/* app.wxss - 全局样式 */
+
+/* 粉色主题（默认） */
+page {
+  --primary: #FF6B9D;
+  --primary-light: #FFE4E9;
+  --primary-bg: #FFF0F5;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-hint: #999999;
+  --border-color: #E0E0E0;
+  --white: #FFFFFF;
+  --success: #4CAF50;
+  --warning: #FF9800;
+  --danger: #F44336;
+}
+
+/* 简约白色主题 */
+.theme-white {
+  --primary: #333333;
+  --primary-light: #F5F5F5;
+  --primary-bg: #FFFFFF;
+}
+
+/* 清新绿色主题 */
+.theme-green {
+  --primary: #4CAF50;
+  --primary-light: #C8E6C9;
+  --primary-bg: #E8F5E9;
+}
+
+/* 通用样式 */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--primary-bg);
+}
+
+/* 按钮样式 */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 16px;
+  padding: 16rpx 32rpx;
+  font-size: 28rpx;
+  border: none;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+.btn-secondary {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-radius: 16px;
+  padding: 16rpx 32rpx;
+  font-size: 28rpx;
+  border: none;
+}
+
+.btn-secondary::after {
+  border: none;
+}
+
+/* 卡片样式 */
+.card {
+  background-color: var(--white);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 输入框样式 */
+.input {
+  background-color: var(--primary-light);
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  color: var(--text-primary);
+}
+
+/* 标签样式 */
+.tag {
+  display: inline-block;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+}
+
+.tag-success {
+  background-color: #E8F5E9;
+  color: var(--success);
+}
+
+.tag-warning {
+  background-color: #FFF3E0;
+  color: var(--warning);
+}
+
+.tag-danger {
+  background-color: #FFEBEE;
+  color: var(--danger);
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+  color: var(--text-hint);
+}
+
+.empty-state-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-state-text {
+  font-size: 28rpx;
+}
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40rpx;
+  color: var(--text-hint);
+  font-size: 28rpx;
+}

@@ -1,0 +1,118 @@
+<!--pages/manageDishes/manageDishes.wxml-->
+<view class="manage-dishes-container">
+  <!-- 分类筛选 -->
+  <view class="filter-bar">
+    <view
+      class="filter-item {{currentCategoryId === '' ? 'filter-active' : ''}}"
+      bindtap="onSelectCategory"
+      data-id=""
+    >全部</view>
+    <view
+      class="filter-item {{currentCategoryId === item._id ? 'filter-active' : ''}}"
+      wx:for="{{categories}}"
+      wx:key="_id"
+      bindtap="onSelectCategory"
+      data-id="{{item._id}}"
+    >{{item.name}}</view>
+  </view>
+
+  <!-- 菜品列表 -->
+  <scroll-view scroll-y class="dishes-list">
+    <view class="dish-empty" wx:if="{{dishes.length === 0}}">
+      <text class="empty-icon">🍽️</text>
+      <text class="empty-text">暂无菜品</text>
+    </view>
+
+    <view class="dish-card" wx:for="{{dishes}}" wx:key="_id">
+      <view class="dish-image">
+        <image
+          wx:if="{{item.image}}"
+          class="dish-image-inner"
+          src="{{item.image}}"
+          mode="aspectFill"
+        ></image>
+        <text class="dish-image-placeholder" wx:else>🍽️</text>
+      </view>
+      <view class="dish-info">
+        <text class="dish-name">{{item.name}}</text>
+        <view class="dish-specs" wx:if="{{item.specs && item.specs.length > 0}}">
+          <text class="spec-tag" wx:for="{{item.specs}}" wx:for-item="spec" wx:key="name">{{spec.name}}</text>
+        </view>
+        <text class="dish-category">{{getCategoryName(item.categoryId)}}</text>
+      </view>
+      <view class="dish-actions">
+        <view class="action-btn action-edit" bindtap="onEditDish" data-id="{{item._id}}">编辑</view>
+        <view class="action-btn action-delete" bindtap="onDeleteDish" data-id="{{item._id}}" data-name="{{item.name}}">删除</view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 添加按钮 -->
+  <view class="add-btn" bindtap="onAddDish">+ 添加菜品</view>
+</view>
+
+<!-- 编辑弹窗 -->
+<view class="edit-modal" wx:if="{{showEditModal}}" bindtap="onCloseEditModal">
+  <view class="edit-modal-content" catchtap="stopPropagation">
+    <view class="edit-modal-header">
+      <text class="edit-modal-title">编辑菜品</text>
+      <text class="edit-modal-close" bindtap="onCloseEditModal">×</text>
+    </view>
+    <view class="edit-modal-body">
+      <!-- 图片 -->
+      <view class="edit-image" bindtap="onEditChooseImage">
+        <image
+          wx:if="{{editDish.image}}"
+          class="edit-image-inner"
+          src="{{editDish.image}}"
+          mode="aspectFill"
+        ></image>
+        <view class="edit-image-placeholder" wx:else>
+          <text>📷 点击更换图片</text>
+        </view>
+      </view>
+      <!-- 名称 -->
+      <view class="edit-field">
+        <text class="edit-label">菜品名称</text>
+        <input
+          class="edit-input"
+          value="{{editDish.name}}"
+          bindinput="onEditNameInput"
+        />
+      </view>
+      <!-- 分类 -->
+      <view class="edit-field">
+        <text class="edit-label">所属分类</text>
+        <view class="edit-categories">
+          <view
+            class="edit-category {{editDish.categoryId === item._id ? 'edit-category-selected' : ''}}"
+            wx:for="{{categories}}"
+            wx:key="_id"
+            bindtap="onEditSelectCategory"
+            data-id="{{item._id}}"
+          >{{item.name}}</view>
+        </view>
+      </view>
+      <!-- 规格 -->
+      <view class="edit-field">
+        <text class="edit-label">规格</text>
+        <view class="edit-specs">
+          <view class="edit-spec-item" wx:for="{{editDish.specs}}" wx:key="index">
+            <input
+              class="edit-spec-input"
+              value="{{item.name}}"
+              bindinput="onEditSpecInput"
+              data-index="{{index}}"
+            />
+            <text class="edit-spec-delete" bindtap="onEditDeleteSpec" data-index="{{index}}">×</text>
+          </view>
+          <text class="edit-spec-add" bindtap="onEditAddSpec">+ 添加规格</text>
+        </view>
+      </view>
+    </view>
+    <view class="edit-modal-footer">
+      <view class="edit-cancel" bindtap="onCloseEditModal">取消</view>
+      <view class="edit-save" bindtap="onSaveEdit">保存</view>
+    </view>
+  </view>
+</view>

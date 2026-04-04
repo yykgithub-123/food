@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "openapi": []
+  },
+  "envVariables": {},
+  "vpc": {
+    "vpcId": "",
+    "subnetId": ""
+  },
+  "functionName": "photo",
+  "timeout": 15,
+  "memorySize": 256
+}

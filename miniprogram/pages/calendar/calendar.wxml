@@ -1,0 +1,75 @@
+<!--pages/calendar/calendar.wxml-->
+<view class="calendar-container theme-{{theme}}">
+  <!-- 月份导航 -->
+  <view class="month-nav">
+    <view class="nav-btn" bindtap="onPrevMonth">◀ 上月</view>
+    <text class="month-title">{{year}}年{{month}}月</text>
+    <view class="nav-btn" bindtap="onNextMonth">下月 ▶</view>
+  </view>
+
+  <!-- 日历网格 -->
+  <view class="calendar-grid">
+    <!-- 星期标题 -->
+    <view class="week-header">
+      <text class="week-item">日</text>
+      <text class="week-item">一</text>
+      <text class="week-item">二</text>
+      <text class="week-item">三</text>
+      <text class="week-item">四</text>
+      <text class="week-item">五</text>
+      <text class="week-item">六</text>
+    </view>
+    <!-- 日期 -->
+    <view class="days-grid">
+      <view
+        class="day-item {{item.hasOrder ? 'day-has-order' : ''}} {{item.isToday ? 'day-today' : ''}}"
+        wx:for="{{days}}"
+        wx:key="date"
+        bindtap="onSelectDate"
+        data-date="{{item.date}}"
+        data-has-order="{{item.hasOrder}}"
+      >
+        <text class="day-text">{{item.day}}</text>
+        <view class="day-dot" wx:if="{{item.hasOrder}}"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 选中日期详情 -->
+  <view class="date-detail" wx:if="{{selectedDate}}">
+    <view class="detail-header">
+      <text class="detail-title">{{selectedDateStr}}的美食记录</text>
+      <view class="upload-btn" bindtap="onUploadPhoto">+ 上传照片</view>
+    </view>
+
+    <!-- 当天订单 -->
+    <view class="detail-orders" wx:if="{{dayOrders.length > 0}}">
+      <text class="detail-label">当天订单</text>
+      <view class="order-tags">
+        <text class="order-tag" wx:for="{{dayOrderDishes}}" wx:key="index">
+          {{item}}
+        </text>
+      </view>
+    </view>
+
+    <!-- 美食照片 -->
+    <view class="detail-photos" wx:if="{{dayPhotos.length > 0}}">
+      <text class="detail-label">美食照片</text>
+      <view class="photo-grid">
+        <image
+          class="photo-item"
+          wx:for="{{dayPhotos}}"
+          wx:key="_id"
+          src="{{item.imageUrl}}"
+          mode="aspectFill"
+          bindtap="onPreviewPhoto"
+          data-url="{{item.imageUrl}}"
+        ></image>
+      </view>
+    </view>
+
+    <view class="detail-empty" wx:if="{{dayOrders.length === 0 && dayPhotos.length === 0}}">
+      <text class="empty-text">这一天还没有记录</text>
+    </view>
+  </view>
+</view>

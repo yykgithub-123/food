@@ -1,0 +1,54 @@
+<!--pages/orders/orders.wxml-->
+<view class="orders-container theme-{{theme}}">
+  <!-- 状态筛选栏 -->
+  <view class="status-bar">
+    <view
+      class="status-item {{currentStatus === 'all' ? 'status-active' : ''}}"
+      bindtap="onSelectStatus"
+      data-status="all"
+    >全部</view>
+    <view
+      class="status-item {{currentStatus === 'pending' ? 'status-active' : ''}}"
+      bindtap="onSelectStatus"
+      data-status="pending"
+    >待完成</view>
+    <view
+      class="status-item {{currentStatus === 'completed' ? 'status-active' : ''}}"
+      bindtap="onSelectStatus"
+      data-status="completed"
+    >已完成</view>
+    <view
+      class="status-item {{currentStatus === 'cancelled' ? 'status-active' : ''}}"
+      bindtap="onSelectStatus"
+      data-status="cancelled"
+    >已取消</view>
+  </view>
+
+  <!-- 订单列表 -->
+  <scroll-view scroll-y class="orders-list">
+    <view class="order-empty" wx:if="{{orders.length === 0}}">
+      <text class="empty-icon">📋</text>
+      <text class="empty-text">暂无订单</text>
+    </view>
+
+    <view class="order-card" wx:for="{{orders}}" wx:key="_id">
+      <view class="order-header">
+        <text class="order-id">订单 #{{item._id.slice(-6)}}</text>
+        <view class="order-status status-{{item.status}}">
+          {{item.status === 'pending' ? '待完成' : item.status === 'completed' ? '已完成' : '已取消'}}
+        </view>
+      </view>
+      <view class="order-time">{{item.createdAtStr}}</view>
+      <view class="order-items">
+        <text class="order-item" wx:for="{{item.items}}" wx:for-item="dish" wx:key="dishId">
+          {{dish.dishName}} x{{dish.quantity}}{{dish.spec ? '(' + dish.spec + ')' : ''}}
+        </text>
+      </view>
+      <!-- 操作按钮（仅厨师可见） -->
+      <view class="order-actions" wx:if="{{isChef && item.status === 'pending'}}">
+        <view class="action-btn action-complete" bindtap="onCompleteOrder" data-id="{{item._id}}">标记完成</view>
+        <view class="action-btn action-cancel" bindtap="onCancelOrder" data-id="{{item._id}}">取消订单</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
