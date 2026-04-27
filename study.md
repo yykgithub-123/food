@@ -1,9 +1,3 @@
 # 学习
 79679679679679679679679
-796796796796796
-sada
-JHG
-
-hkhqdasda
-
-asdasd
+asdasdasdasdasdasdas
