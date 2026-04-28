@@ -4,6 +4,3 @@ asdasdasdasdasdasdas
 
 jahsgdhaskjdjaoskdasd
 ajkshdkjashdlkasjk;rfgkh
-alkijsdl;asdasdasdasd
-asdjhaksdoihaoaksdn
-n oihobhknKHNBKJHBNO
